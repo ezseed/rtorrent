@@ -9,7 +9,6 @@
 ###############################################################################
 USER=$1
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-CHEMIN=$(sudo -i -u $USER env | grep HOME | sed 's/\HOME=//')
 CONFIG_DIR="/usr/local/opt/ezseed"
 
 ###############################################################################
@@ -32,14 +31,11 @@ $DIR/daemon.sh stop $USER
 # killall -9 -u $USER
 
 #On supprime tout de l'user
-rm -rf $CHEMIN
 rm -rf /var/www/rutorrent/conf/users/$USER
 rm -rf /var/www/rutorrent/share/users/$USER
 rm -rf /var/run/screen/S-$USER
-# userdel $USER
 
 #On supprime l'accès à rutorrent
 sed -i "/`echo $USER`:/d" $CONFIG_DIR/rutorrent_passwd
-
 
 exit 0
