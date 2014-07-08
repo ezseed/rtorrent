@@ -28,7 +28,7 @@ fi
 $DIR/daemon.sh stop $USER
 
 # On tue tout ce que possede l'user
-# killall -9 -u $USER
+killall -9 -u $USER
 
 #On supprime tout de l'user
 rm -rf /var/www/rutorrent/conf/users/$USER
