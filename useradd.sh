@@ -10,7 +10,7 @@
 USER=$1
 PW=$2
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-USER_HOME=$(sudo -i -u $USER env | grep HOME | sed 's/\HOME=//')
+USER_HOME=$(su - $USERNAME -c 'cd ~/ && echo $HOME')
 WEBUSER=$(ps aux | grep $(netstat -tulpn | grep :80 | awk -F/ '{print $2}' | sed -e "s/ *$//" | sort -u) | cut -d ' ' -f 1 | sed '/root/d' | sort -u)
 
 ###############################################################################
@@ -55,11 +55,11 @@ cat > /var/www/rutorrent/conf/users/$USER/config.php<< EOF
 \$scgi_host = "unix://$USER_HOME/rtorrent/session/rpc.socket";
 \$XMLRPCMountPoint = "/RPC00001";
 \$pathToExternals = array(
-    "php"   => '',               
-    "curl"  => '/usr/bin/curl',  
-    "gzip"  => '',               
-    "id"    => '',               
-    "stat"  => '/usr/bin/stat',  
+    "php"   => '',
+    "curl"  => '/usr/bin/curl',
+    "gzip"  => '',
+    "id"    => '',
+    "stat"  => '/usr/bin/stat',
 );
 \$topDirectory = "$USER_HOME";
 ?>
