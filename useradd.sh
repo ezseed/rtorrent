@@ -11,6 +11,7 @@ USER=$1
 PW=$2
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 USER_HOME=$(su - $USER -c 'cd ~/ && echo $HOME')
+CONFIG_DIR="/usr/local/opt/ezseed"
 
 ###############################################################################
 ###############################    SCRIPT    ##################################
@@ -21,12 +22,12 @@ if [ "$(id -u)" != "0" ]; then
         exit 1
 fi
 
-if [ ! -d "/usr/local/nginx"  ]; then
-  mkdir -p /usr/local/nginx
+if [ ! -d "$CONFIG_DIR"  ]; then
+  mkdir -p $CONFIG_DIR
 fi
 
-if [ ! -f "/usr/local/nginx/rutorrent_passwd" ]; then
-  touch /usr/local/nginx/rutorrent_passwd
+if [ ! -f "$CONFIG_DIR/rutorrent_passwd" ]; then
+  touch $CONFIG_DIR/rutorrent_passwd
 fi
 
 # Création de l'utilisateur
