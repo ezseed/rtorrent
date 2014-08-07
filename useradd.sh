@@ -77,6 +77,6 @@ EOF
 
 chown -R $USER:$USER $USER_HOME/*
 
-$DIR/daemon.sh start $USER
+##$DIR/daemon.sh start $USER
 
 exit 0
