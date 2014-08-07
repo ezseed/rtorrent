@@ -13,6 +13,36 @@ Web server, `nginx` prefered.
 
 For a more powerful usage see [ezseed](https://github.com/ezseed/ezseed)
 
+##Vhost
+
+### Nginx example
+
+```
+server {
+	listen 80;
+	server_name localhost;
+
+  location /rutorrent {
+		
+		/var/www;
+    index index.php index.html index.htm;
+    server_tokens off;
+    auth_basic "Merci de vous identifier";
+    auth_basic_user_file "/usr/local/opt/ezseed/rutorrent_passwd";
+  }
+
+  location ~ \.php$ {
+    root "/var/www";
+    fastcgi_pass unix:/etc/phpcgi/php-cgi-ezseed.socket;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+  }
+
+```
+
+[More examples (https, apache)](https://github.com/ezseed/ezseed/tree/master/scripts/vhost)
+
 ## Nodejs
 
 This module is there to be used without [ezseed](https://github.com/ezseed/ezseed) whole package. If you need to require this in a module:
