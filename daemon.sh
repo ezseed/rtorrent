@@ -33,18 +33,19 @@ CONFIG_DIR="/usr/local/opt/ezseed"
 # will not work
 # system user to run as
 user=$2
+user_home=$(su - $user -c 'cd ~/ && echo $HOME')
 
 # the system group to run as, not implemented, see d_start for beginning implementation
 # group=`id -ng "$user"`
 
 # the full path to the filename where you store your rtorrent configuration
-config="`su $user -c 'echo ~/' `.rtorrent.rc"
+config="$user_home/.rtorrent.rc"
 
 # set of options to run with
 options=""
 
 # default directory for screen, needs to be an absolute path
-base="`su $user -c 'echo ~/'`"
+base="$user_home"
 
 # name of screen session
 srnname="rtorrent-$user"
