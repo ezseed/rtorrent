@@ -31,7 +31,7 @@ if [ ! -f "$CONFIG_DIR/rutorrent_passwd" ]; then
 fi
 
 # Création de l'utilisateur
-python $DIR/htpasswd.py -b /usr/local/nginx/rutorrent_passwd $USER $PW
+python $DIR/htpasswd.py -b $CONFIG_DIR/rutorrent_passwd $USER $PW
 
 # Création des répertoires
 # keep chroot rights by creating as root and chown'd them later
