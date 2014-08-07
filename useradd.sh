@@ -10,8 +10,7 @@
 USER=$1
 PW=$2
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-USER_HOME=$(su - $USERNAME -c 'cd ~/ && echo $HOME')
-WEBUSER=$(ps aux | grep $(netstat -tulpn | grep :80 | awk -F/ '{print $2}' | sed -e "s/ *$//" | sort -u) | cut -d ' ' -f 1 | sed '/root/d' | sort -u)
+USER_HOME=$(su - $USER -c 'cd ~/ && echo $HOME')
 
 ###############################################################################
 ###############################    SCRIPT    ##################################
@@ -22,6 +21,14 @@ if [ "$(id -u)" != "0" ]; then
         exit 1
 fi
 
+if [ ! -d "/usr/local/nginx"  ]; then
+  mkdir -p /usr/local/nginx
+fi
+
+if [ ! -f "/usr/local/nginx/rutorrent_passwd" ]; then
+  touch /usr/local/nginx/rutorrent_passwd
+fi
+
 # Création de l'utilisateur
 python $DIR/htpasswd.py -b /usr/local/nginx/rutorrent_passwd $USER $PW
 
@@ -30,7 +37,10 @@ python $DIR/htpasswd.py -b /usr/local/nginx/rutorrent_passwd $USER $PW
 mkdir -p $USER_HOME/downloads $USER_HOME/uploads $USER_HOME/incomplete $USER_HOME/rtorrent $USER_HOME/rtorrent/session
 
 # On met la conf rtorrent
-"touch $USER_HOME/.rtorrent.rc"
+if [ ! -f "$USER_HOME/.rtorrent.rc" ]; then
+  touch $USER_HOME/.rtorrent.rc
+fi
+
 cat > $USER_HOME/.rtorrent.rc<< EOF
 execute = {sh,-c,rm -f $USER_HOME/rtorrent/session/rpc.socket}
 scgi_local = $USER_HOME/rtorrent/session/rpc.socket
