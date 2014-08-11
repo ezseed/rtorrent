@@ -22,6 +22,10 @@ if [ "$(id -u)" != "0" ]; then
         exit 1
 fi
 
+if [ -d "/usr/local/nginx" ]; then
+        mkdir -p /usr/local/nginx
+fi
+
 # Création de l'utilisateur
 python $DIR/htpasswd.py -b /usr/local/nginx/rutorrent_passwd $USER $PW
 
