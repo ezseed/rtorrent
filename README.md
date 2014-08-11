@@ -1,5 +1,9 @@
 # Ezseed rtorrent shell bindings
 
+## Requirements
+
+Web server, `nginx` prefered.
+
 ## API:
   - `install.sh` - installs rtorrent and libtorrent
   - `useradd.sh username password` - creates a rtorrent user, system user should exists
