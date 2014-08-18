@@ -2,7 +2,12 @@
 
 ## Requirements
 
-Web server, `nginx` prefered.
+Web server, `nginx` prefered. PHP5 is installed through [apt-get among with other dependencies](https://github.com/ezseed/rtorrent/blob/master/install.sh#L36)
+Todo: Add a skip option to this
+
+### Debian squeeze
+
+To make php5-fpm work on debian squeeze you'll need some [dotdeb sources](http://soyuka.me/install-php5-php5-fpm-and-nginx-on-debian-5-squeeze/)
 
 ## API:
   - `install.sh` - installs rtorrent and libtorrent
