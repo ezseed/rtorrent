@@ -146,5 +146,6 @@ fi
 # Redémarrage de php5
 service php5-fpm restart
 
+chown www-data:www-data /etc/phpcgi/php-cgi-ezseed.socket
 
 exit 0
