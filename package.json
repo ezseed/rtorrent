@@ -1,6 +1,6 @@
 {
   "name": "ezseed-rtorrent",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "ezseed rtorrent shell binding",
   "main": "index.js",
   "scripts": {
