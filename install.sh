@@ -96,7 +96,7 @@ make && make install
 # rtorrent compilation
 cd $TMP/rtorrent*
 ./autogen.sh
-./configure --with-xmlrpc-c
+./configure --with-xmlrpc-c=/usr/local/bin/xmlrpc-c-config
 make && make install
 
 # that.
