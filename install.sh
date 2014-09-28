@@ -35,6 +35,14 @@ fi
 # building tools
 apt-get install -y apache2-utils automake build-essential buildtorrent curl ffmpeg git htop libcppunit-dev libcurl3 libcurl3-dev libcurl4-openssl-dev libncurses5 libncurses5-dev libsigc++-2.0-dev libterm-readline-gnu-perl libtool libxmlrpc-c3-dev php5-cgi php5-cli php5-curl php5-fpm php5-geoip pkg-config screen subversion unrar-free unzip
 
+#### xmlrpc-c
+#svn co http://svn.code.sf.net/p/xmlrpc-c/code/advanced xmlrpc-c
+#cd xmlrpc-c
+#./configure
+#make
+#make install
+#cd ..
+#rm -r xmlrpc-c
 
 ###############################################################################
 #############################    RUTOPRRENT    ################################
@@ -88,6 +96,7 @@ make && make install
 # rtorrent compilation
 cd $TMP/rtorrent*
 ./autogen.sh
+#./configure --with-xmlrpc-c=/usr/local/bin/xmlrpc-c-config
 ./configure --with-xmlrpc-c
 make && make install
 
@@ -146,5 +155,6 @@ fi
 # Redémarrage de php5
 service php5-fpm restart
 
+chown www-data:www-data /etc/phpcgi/php-cgi-ezseed.socket
 
 exit 0
