@@ -6,8 +6,8 @@ TMP="/tmp/ezseed" 						# Répertoire temporaire
 WEB="/var/www" 					# Répertoire web
 RUTORRENT="/var/www/rutorrent" 	# Répertoire de rutorrent
 POOLUSER="ezseedpool"			# Nom de l'utilisateur qui lance le pool php
-LIBTORRENT="http://libtorrent.rakshasa.no/downloads/libtorrent-0.13.4.tar.gz" 	# Adresse de DL pour libtorrent
-RTORRENT="http://libtorrent.rakshasa.no/downloads/rtorrent-0.9.4.tar.gz" 		# Adresse de DL pour rtorrent
+LIBTORRENT="https://github.com/rakshasa/libtorrent/archive/0.13.5.tar.gz" 	# Adresse de DL pour libtorrent
+RTORRENT="https://github.com/rakshasa/rtorrent/archive/0.9.5.tar.gz" 		# Adresse de DL pour rtorrent
 CONFIG_DIR="/usr/local/opt/ezseed"
 
 ###############################################################################
